@@ -1,0 +1,117 @@
+/* FOR Rice Traders – invoice styles */
+:root{
+  --green:#1e4a2a;
+  --green2:#2b5d36;
+  --gold:#c9a03c;
+  --cream:#fbf8ef;
+  --line:#d9d2bf;
+  --text:#2a2a2a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Roboto',Arial,sans-serif;background:#e7e4dc;color:var(--text)}
+
+/* ---------- toolbar ---------- */
+.toolbar{position:sticky;top:0;z-index:10;background:var(--green);color:#fff;padding:10px 16px;
+  display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.toolbar button,.toolbar select{font:500 14px 'Roboto',sans-serif;border:0;border-radius:6px;padding:8px 14px;cursor:pointer}
+.toolbar button{background:var(--gold);color:#1b1b1b}
+.toolbar button:hover{filter:brightness(1.08)}
+.toolbar button.alt{background:#fff;color:var(--green)}
+.toolbar select{background:#fff;color:var(--green);min-width:200px}
+.toolbar .storage{font-size:12px;padding:4px 10px;border-radius:12px;background:rgba(255,255,255,.12);white-space:nowrap}
+.toolbar .storage.warn{background:#e0a100;color:#1b1b1b;font-weight:700}
+.toolbar .storage.full{background:#c0392b;color:#fff;font-weight:700}
+.toolbar .sep{width:1px;height:26px;background:rgba(255,255,255,.3);margin:0 4px}
+.msg{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;
+  padding:10px 18px;border-radius:6px;opacity:0;transition:.3s;pointer-events:none;z-index:20}
+.msg.show{opacity:1}
+
+.wrap{padding:24px 0 60px;display:flex;justify-content:center}
+
+/* ---------- A4 page ---------- */
+.page{width:210mm;height:297mm;background:var(--cream);position:relative;overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,.18);padding:0 13mm;display:flex;flex-direction:column}
+
+.header{display:flex;align-items:center;justify-content:center;position:relative;padding-top:7mm}
+.logo{position:absolute;left:-2mm;top:3mm;width:30mm;height:30mm;object-fit:contain}
+.title{font-family:'Oswald','Arial Narrow',Impact,sans-serif;font-weight:700;color:var(--green);
+  font-size:46px;letter-spacing:1px;line-height:1.15}
+.divider{display:flex;align-items:center;justify-content:center;gap:8px;margin:1mm auto 0}
+.divider .ln{height:1.5px;width:58mm;background:var(--gold)}
+.divider svg{width:18px;height:12px}
+
+.shop{margin:6mm 0 0 4mm;font-size:13px;font-weight:500;line-height:1.7;color:#333}
+
+.infobox{border:1.3px solid #8fa596;border-radius:6px;margin-top:4mm;padding:3mm 5mm;
+  display:grid;grid-template-columns:1fr 1fr;column-gap:10mm;font-size:12px;font-weight:500;line-height:2}
+.infobox .row{display:flex;align-items:center;gap:4px;white-space:nowrap}
+.infobox .row span.v, .infobox input{flex:1;min-width:0}
+
+input,select{font:inherit;color:inherit;background:transparent;border:0;outline:0}
+.editable{border-bottom:1px dashed #b8b09a !important}
+.editable:focus{background:#fff6dc}
+
+/* ---------- items table ---------- */
+.items{width:100%;border-collapse:collapse;margin-top:12mm;font-size:12px}
+.items th{background:var(--green);color:#fff;font-weight:500;padding:6px 4px;text-align:center;border-left:1.5px solid var(--gold)}
+.items th:first-child{border-left:0}
+.items td{border:1px solid var(--gold);height:24px;padding:0 6px;text-align:center;background:rgba(255,255,255,.35)}
+.items td.l{text-align:left}
+.items td input,.items td select{width:100%;text-align:inherit;text-transform:uppercase}
+.items td select{cursor:pointer;-webkit-appearance:none;appearance:none}
+.items .del{position:absolute;right:-26px;top:3px;border:0;background:#b33;color:#fff;border-radius:50%;
+  width:18px;height:18px;font-size:11px;cursor:pointer;line-height:18px}
+.items tr{position:relative}
+.items td:last-child{position:relative}
+.items tr.blank td{height:24px;border-left-color:transparent;border-right-color:transparent;border-bottom:0;background:transparent}
+.items tr.blank td{border-top:1px solid rgba(201,160,60,.35)}
+.qtywrap{display:flex;align-items:center;justify-content:center;gap:4px}
+.items td .qtywrap input{width:42px;text-align:right}
+.bags{font-size:12px}
+.addrow{margin:6px 0 0;font:500 12px 'Roboto';background:var(--green2);color:#fff;border:0;border-radius:4px;padding:4px 10px;cursor:pointer}
+
+/* ---------- totals ---------- */
+.mid{display:flex;justify-content:space-between;align-items:flex-end;margin-top:auto;padding-top:4mm}
+.art{width:78mm;height:54mm;margin-left:-6mm;object-fit:contain;object-position:left bottom}
+.totals{width:73mm;border:1.3px solid var(--gold);border-radius:5px;overflow:hidden;font-size:12px;font-weight:500;margin-right:-1mm}
+.totals .r{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--gold);height:22px;align-items:center}
+.totals .r:last-child{border-bottom:0}
+.totals .r > div{padding:0 7px;height:100%;display:flex;align-items:center}
+.totals .r > div:last-child{border-left:1px solid var(--gold);justify-content:center;font-weight:700}
+.totals .r > div:last-child input{width:100%;text-align:center;font-weight:700}
+.totals .gt{background:var(--gold);color:#fff}
+.totals .gt > div:last-child{color:#2a2a2a;border-left-color:rgba(255,255,255,.4)}
+.totals .bd{background:var(--green);color:#fff}
+.totals .bd > div:last-child{color:#fff;caret-color:#fff;border-left-color:rgba(255,255,255,.3)}
+
+.divider2{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:3mm}
+.divider2 .ln{height:1px;flex:1;background:var(--gold);opacity:.8}
+
+.bottom3{display:grid;grid-template-columns:1fr 0.9fr 1.45fr;gap:3mm;margin-top:3mm;font-size:9.5px;line-height:1.9}
+.bottom3 h4{font-size:9.5px;color:var(--green);font-weight:700;margin-bottom:1mm}
+.bottom3 > div + div{border-left:1px solid var(--line);padding-left:3mm}
+.bottom3 input{width:100%;font-size:9.5px}
+
+.sign{border:1px solid var(--line);border-radius:3px;margin-top:6mm;display:grid;grid-template-columns:1fr 1fr;height:23mm}
+.sign > div{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding-bottom:4mm;font-size:10.5px;font-weight:500}
+.sign > div + div{border-left:1px solid var(--line)}
+.sign .sl{width:60%;border-top:1px solid #999;margin-bottom:4mm}
+
+.footer{margin:4mm -13mm 0;background:var(--green);color:var(--gold);height:13mm;display:flex;
+  align-items:center;justify-content:center;gap:22mm;font-size:15px;font-weight:500}
+.footer svg{width:48px;height:20px}
+
+/* ---------- static (print/pdf) view ---------- */
+#printArea{display:none}
+.static .no-print{display:none !important}
+.static .editable{border-bottom:0 !important}
+
+@page{size:A4;margin:0}
+@media print{
+  body{background:none}
+  .toolbar,.wrap,.msg{display:none !important}
+  #printArea{display:block !important}
+  #printArea .page{box-shadow:none;margin:0}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+@media (max-width:860px){ .wrap{zoom:.5} }
