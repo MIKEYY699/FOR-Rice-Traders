@@ -50,7 +50,7 @@ function addRow(data = {}){
         ${VARIETIES.map(v=>`<option ${v===data.variety?'selected':''}>${v}</option>`).join('')}
     </select></td>
     <td>${PACKING}</td>
-    <td><span class="qtywrap"><input class="qty editable" inputmode="numeric" value="${data.qty ?? ''}"><span class="bags no-print">BAGS</span></span></td>
+    <td><input class="qty editable" inputmode="numeric" value="${data.qty ?? ''}"></td>
     <td><input class="rate editable" inputmode="numeric" value="${data.rate ?? ''}"></td>
     <td><span class="amt"></span></td>`;
   const del = document.createElement('button');
@@ -144,7 +144,6 @@ function buildStatic(){
     const span = document.createElement('span');
     let v = el.value;
     if(el.type === 'date') v = dmy(v);
-    if(el.classList.contains('qty') && v.trim()) v = (v.replace(/bags?/i,'').trim()) + ' BAGS';
     if(el.classList.contains('num') && v.trim() && !isNaN(num(v))) v = fmt(num(v));
     span.textContent = v;
     span.style.cssText = getComputedStyle(el).textTransform === 'uppercase' ? 'text-transform:uppercase' : '';
